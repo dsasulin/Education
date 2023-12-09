@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FPMI_java_SANDBOX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FPMI_java_SANDBOX_jar</output-path>
+    <root id="archive" name="FPMI_java_SANDBOX.jar">
+      <element id="module-output" name="FPMI_java_SANDBOX" />
+    </root>
+  </artifact>
+</component>
