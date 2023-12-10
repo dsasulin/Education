@@ -1,8 +1,20 @@
 package org.example;
 
 public class Route {
-    City city;
-    int cost;
+    private City city;
+    private int cost;
+
+    public City getCity() {
+        return city;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
 
     Route(City city, int cost){
         this.city = city;
@@ -11,7 +23,7 @@ public class Route {
 
     public String toString() {
         String res;
-        res = this.city.name + ":" + this.cost;
+        res = this.city.getName() + ":" + this.cost;
 
         return res;}
 

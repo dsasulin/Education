@@ -2,10 +2,16 @@ package org.example;
 
 public class Home {
 
-    final int levels;
+    private final int levels;
+
+    public int getLevels() {
+        return levels;
+    }
 
     Home(int levels){
-
+        if (levels < 0) {
+            throw new IllegalArgumentException();
+        }
         this.levels = levels;
     }
 

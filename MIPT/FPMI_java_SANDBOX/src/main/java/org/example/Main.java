@@ -2,6 +2,7 @@ package org.example;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Main {
     public static void main(String[] args) {
@@ -152,7 +153,7 @@ public class Main {
         System.out.println("сознаем новую точку и меняем только в первой линии");
 
         Point start3 = new Point(1,1);
-        l1.a = start3;
+        //l1.a = start3;
 
         System.out.println(l1);
         System.out.println(l2);
@@ -166,9 +167,9 @@ public class Main {
         Human peter = new Human(new Name("Петр" ,"Чудов"),'м');
         Human boris = new Human(new Name("Борис" ), 'м');
         Human maria = new Human(new Name("Мария" ), 'ж');
-        peter.father = ivan;
-        boris.father = peter;
-        maria.father = boris;
+        //peter.father = ivan;
+        //boris.father = peter;
+        //maria.father = boris;
         System.out.println(ivan);
         System.out.println(peter);
         System.out.println(boris);
@@ -191,20 +192,20 @@ public class Main {
         Student vasia = new Student("vasia", new int[]{3,4,5});
         System.out.println(vasia);
         Student petia = new Student("petia");
-        petia.rates = vasia.rates;
+        //petia.rates = vasia.rates;
         System.out.println(petia);
-        petia.rates[0] = 5;
+        //petia.rates[0] = 5;
         System.out.println(vasia);
         System.out.println(petia);
-        Student andrey = new Student("andrey",new int[3]);
-        for (int i = 0 ; i < vasia.rates.length; i ++){
-            andrey.rates[i] = vasia.rates[i];
-        }
+        //Student andrey = new Student("andrey",new int[3]);
+        //for (int i = 0 ; i < vasia.rates.length; i ++){
+        //    andrey.rates[i] = vasia.rates[i];
+        //}
         System.out.println(vasia);
-        System.out.println(andrey);
-        vasia.rates[0] = 1;
+        //System.out.println(andrey);
+        //vasia.rates[0] = 1;
         System.out.println(vasia);
-        System.out.println(andrey);
+        //System.out.println(andrey);
 
 
         System.out.println("");
@@ -235,29 +236,29 @@ public class Main {
         Route ab = new Route(b,5);
         Route af = new Route(f,1);
         Route ad = new Route(d,6);
-        a.routes.add(ab);
-        a.routes.add(af);
-        a.routes.add(ad);
+        //a.routes.add(ab);
+        //a.routes.add(af);
+        //a.routes.add(ad);
         Route ba = new Route(a,5);
         Route bc = new Route(c,3);
-        b.routes.add(ba);
-        b.routes.add(bc);
+        //b.routes.add(ba);
+        //b.routes.add(bc);
         Route cb = new Route(b,3);
         Route cd = new Route(d,4);
-        c.routes.add(cb);
-        c.routes.add(cd);
+        //c.routes.add(cb);
+        //c.routes.add(cd);
         Route dc = new Route(c,4);
         Route de = new Route(e,2);
         Route da = new Route(a,6);
-        d.routes.add(dc);
-        d.routes.add(de);
-        d.routes.add(da);
+        //d.routes.add(dc);
+        //d.routes.add(de);
+        //d.routes.add(da);
         Route ef = new Route(f,2);
-        e.routes.add(ef);
+        //e.routes.add(ef);
         Route fb = new Route(b,4);
         Route fe = new Route(e,2);
-        f.routes.add(fb);
-        f.routes.add(fe);
+        ///f.routes.add(fb);
+        //f.routes.add(fe);
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
@@ -346,7 +347,7 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 1.5.1");
-        Pistol pistol = new Pistol(3);
+        Pistol pistol = new Pistol(3, 3);
         for(int i = 1; i<=5; i++){
             pistol.fire();
         }
@@ -389,6 +390,7 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 1.5.6");
+
         Student v = new Student("Вася", new int[]{3,4,5,4});
         Student v1 = new Student("Вася2");
         System.out.println(v.avg());
@@ -438,6 +440,102 @@ public class Main {
         cline45.points.set(3,np168);
         System.out.println(cline45);
         System.out.println(cline45.lenght());
+
+
+        System.out.println("");
+        System.out.println("Задача 1.6.1");
+        Home nh161 = new Home(3);
+        System.out.println(nh161);
+        Home nh162 = new Home(1);
+        System.out.println(nh161);
+
+        System.out.println("");
+        System.out.println("Задача 1.6.2");
+        Time t162 = new Time(87220);
+        System.out.println(t162);
+
+        System.out.println("");
+        System.out.println("Задача 1.6.3");
+        Square sq163 = new Square(new Point(1,1),5);
+        System.out.println(sq163);
+        System.out.println(sq163.getSide());
+        //sq163.setSide(-5);
+        //Square sq164 = new Square(new Point(1,1),-5);
+
+        System.out.println("");
+        System.out.println("Задача 1.6.4");
+       // Fraction f164 = new Fraction(1,-22);
+       // System.out.println(f164);
+        // System.out.println(f164.getDown());
+
+        System.out.println("");
+        System.out.println("Задача 1.6.5");
+        Pistol pistol165 = new Pistol(5,5);
+        System.out.println(pistol165.getMaxBullets());
+        System.out.println(pistol165.getBullets());
+        pistol165.fire();
+        System.out.println(pistol165.getBullets());
+        pistol165.fire();
+        System.out.println(pistol165.getBullets());
+        pistol165.reload(12);
+        System.out.println(pistol165.getBullets());
+        System.out.println(pistol165.unload());
+        System.out.println(pistol165.getBullets());
+        System.out.println(pistol165.ready());
+        pistol165.reload(12);
+        System.out.println(pistol165.ready());
+        Pistol pistol166 = new Pistol(7,3);
+        for(int i = 1; i<=5; i++){
+            pistol166.fire();
+        }
+        pistol166.reload(8);
+        pistol166.fire();
+        pistol166.fire();
+        System.out.println(pistol166.unload());
+        pistol166.fire();
+
+        System.out.println("");
+        System.out.println("Задача 1.6.6");
+        Point p166 = new Point(1,1);
+        Point p167 = new Point(2,2);
+        Point p168 = new Point(3,3);
+        Line l166 = new Line(p166,p167);
+        Line l167 = new Line(p167,p168);
+        System.out.println(l166);
+        System.out.println(l167);
+        Point p169 = new Point(4,4);
+        l166.setB(p169);
+        System.out.println(l166);
+        System.out.println(l167);
+
+        System.out.println("");
+        System.out.println("Задача 1.6.7");
+        Name name167 = new Name("1");
+        name167.setName("ddd");
+        System.out.println(name167);
+
+        System.out.println("");
+        System.out.println("Задача 1.6.10");
+        City c1610 = new City("A");
+        City c1611 = new City("B");
+        City c1612 = new City("C");
+        City c1613 = new City("D");
+        Route r1610 = new Route(c1610,1);
+        Route r1611 = new Route(c1611,2);
+        Route r1612 = new Route(c1612,3);
+        ArrayList<Route> newRoute = new ArrayList<>();
+        newRoute.add(r1610);
+        newRoute.add(r1611);
+        newRoute.add(r1612);
+        c1610.addRoute(newRoute);
+        System.out.println(c1610);
+        Route r1613 = new Route(c1612,5);
+        Route r1614 = new Route(c1613,5);
+        ArrayList<Route> newRoute2 = new ArrayList<>();
+        newRoute2.add(r1613);
+        newRoute2.add(r1614);
+        c1610.addRoute(newRoute2);
+        System.out.println(c1610);
 
     }
 

@@ -2,10 +2,21 @@ package org.example;
 
 
 public class Fraction {
-    private int top,down;
+    private final int top,down;
+
+    public int getTop() {
+        return this.top;
+    }
+
+    public int getDown() {
+        return this.down;
+    }
 
     Fraction(int top, int down){
         this.top = top;
+        if (down < 0 ){
+            throw new IllegalArgumentException();
+        }
         this.down = down;
     }
     public Fraction sum(Fraction f2){

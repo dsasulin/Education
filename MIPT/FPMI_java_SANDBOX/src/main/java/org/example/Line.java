@@ -3,11 +3,27 @@ package org.example;
 import static java.lang.Math.*;
 
 class Line {
-    Point a,b;
+    private Point a,b;
 
-    Line(Point a,Point b){
-        this.a = a;
-        this.b = b;
+    public Point getA() {
+        return a;
+    }
+
+    public void setA(Point a) {
+        this.a = new Point(a.x,a.y);
+    }
+
+    public Point getB() {
+        return b;
+    }
+
+    public void setB(Point b) {
+        this.b = new Point(b.x,b.y);
+    }
+
+    Line(Point a, Point b){
+        this.a = new Point(a.x,a.y);
+        this.b = new Point(b.x,b.y);
     }
     Line(int x1, int y1, int x2, int y2){
         this(new Point(x1,y1),new Point(x2,y2));

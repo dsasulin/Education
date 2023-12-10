@@ -15,7 +15,6 @@ public class Employee {
         }else {
             res = this.name + " работает в отделе" + this.dept.name + ", начальник которого " + this.dept.boss.name + ", ";
         }
-
         res = res + this.dept;
         return res;
     }

@@ -3,8 +3,13 @@ package org.example;
 
 public class Time {
     private int seconds;
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds % 86400;
+    }
+
     Time(int second){
-        this.seconds = second;
+        this.seconds = second % 86400;
     }
 
     Time(int hour, int minute, int second){

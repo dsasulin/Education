@@ -6,12 +6,30 @@ import java.util.List;
 public class Student {
 
     String name;
-    int[] rates;
+    private int[] rates;
+
+    public int[] getRates() {
+        return rates.clone();
+    }
+
+    public void setRates(int[] rates) {
+        for(int i = 0; i < rates.length;i++){
+            if (rates[i] < 2 || rates[i] > 5){
+                throw new IllegalArgumentException("Оценка не может быть меньше 2 и больше 5");
+            }
+        }
+        this.rates = rates.clone();
+    }
 
     Student(String name){
         this(name,new int[0]);
     }
     Student(String name, int[] rates){
+        for(int i = 0; i < rates.length;i++){
+            if (rates[i] < 2 || rates[i] > 5){
+                throw new IllegalArgumentException("Оценка не может быть меньше 2 и больше 5");
+            }
+        }
         this.name = name;
         this.rates = rates;
     }

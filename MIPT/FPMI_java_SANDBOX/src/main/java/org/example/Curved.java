@@ -38,8 +38,8 @@ public class Curved {
         if (this.points.size() == 0 ||  this.points.size() == 1 ){
             return res;
         }else {
-            for (int i = 0; i < this.points.size()-1; i++) {
-                res = res + (int) sqrt(pow((this.points.get(i+1).x - this.points.get(i).x), 2) + pow((this.points.get(i+1).y - this.points.get(i).y), 2));
+            for (int i = 0; i < this.points.size() - 1; i++) {
+                res = res + (int) sqrt(pow((this.points.get(i + 1).x - this.points.get(i).x), 2) + pow((this.points.get(i + 1).y - this.points.get(i).y), 2));
             }
         }
         return res;

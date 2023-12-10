@@ -4,10 +4,32 @@ import java.util.ArrayList;
 
 public class Square {
     Point start;
-    int side;
+    private int side;
+
+    public Point getStart() {
+        return start;
+    }
+
+    public void setStart(Point start) {
+        this.start = start;
+    }
+
+    public int getSide() {
+        return side;
+    }
+
+    public void setSide(int side) {
+        if (side <= 0 ) {
+            throw new IllegalArgumentException();
+        }
+        this.side = side;
+    }
 
     Square(Point start, int side){
         this.start = start;
+        if (side <= 0 ) {
+            throw new IllegalArgumentException();
+        }
         this.side = side;
     }
     Square(int x, int y, int side){
@@ -21,7 +43,7 @@ public class Square {
         Point p2,p3,p4;
         p2 = new Point(this.start.x + side, this.start.y);
         p3 = new Point(p2.x, p2.y - side);
-        p4 = new Point(p3.x-side, p3.y + side);
+        p4 = new Point(p3.x - side, p3.y + side);
         points.add(p2);
         points.add(p3);
         points.add(p4);
