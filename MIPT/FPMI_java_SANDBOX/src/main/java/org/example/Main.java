@@ -1,6 +1,8 @@
 package org.example;
 
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Задача 2.1 -  " + Block12.fraction(5.25));
@@ -341,9 +343,102 @@ public class Main {
         Student max = new Student("Максим");
         System.out.println(nvasia);
         System.out.println(max);
+
+        System.out.println("");
+        System.out.println("Задача 1.5.1");
+        Pistol pistol = new Pistol(3);
+        for(int i = 1; i<=5; i++){
+            pistol.fire();
+        }
+
+        System.out.println("");
+        System.out.println("Задача 1.5.2");
+        Cat barsik = new Cat("Барсик");
+        barsik.meow();
+        barsik.meow(3);
+
+        System.out.println("");
+        System.out.println("Задача 1.5.3");
+        Line line12 = new Line(new Point(1,1), new Point(10,15));
+        line12.lenght();
+
+        System.out.println("");
+        System.out.println("Задача 1.5.4");
+        Time time123 = new Time(34056);
+        time123.whatTime("час");
+        Time time124 = new Time(4532);
+        time124.whatTime("минута");
+        Time time125 = new Time(123);
+        time125.whatTime("секунда");
+
+        System.out.println("");
+        System.out.println("Задача 1.5.5");
+        Fraction f1 = new Fraction(1,3);
+        System.out.println(f1);
+        Fraction f2 = new Fraction(1,6);
+        System.out.println(f2);
+        System.out.println(f1.sum(f2));
+        System.out.println(f1.sum(3));
+        System.out.println(f1.minus(f2));
+        System.out.println(f1.minus(3));
+        System.out.println(f1.mul(f2));
+        System.out.println(f1.mul(3));
+        System.out.println(f1.sum(f2).mul(f2).minus(5));
+        System.out.println(f1.div(f2));
+        System.out.println(f1.div(3));
+
+        System.out.println("");
+        System.out.println("Задача 1.5.6");
+        Student v = new Student("Вася", new int[]{3,4,5,4});
+        Student v1 = new Student("Вася2");
+        System.out.println(v.avg());
+        System.out.println(v);
+        System.out.println(v1.avg());
+        System.out.println(v1);
+        Student v3 = new Student("Петя", new int[]{5,5,5,5});
+        System.out.println(v3.avg());
+        System.out.println(v3.isFive());
+        System.out.println(v3);
+
+        System.out.println("");
+        System.out.println("Задача 1.5.7");
+        System.out.println(cline2);
+        Point np157 = new Point(8,8);
+        cline2.addPoints(np157);
+        System.out.println(cline2);
+        Point np158 = new Point(9,9);
+        Point np159 = new Point(10,10);
+        cline2.addPointsArray(new Point[]{np158,np159});
+        System.out.println(cline2);
+        Point np160 = new Point(11,11);
+        Point np161 = new Point(12,12);
+        cline2.addPoints(np160,np161);
+        System.out.println(cline2);
+        System.out.println(cline2.lenght());
+        Point np162 = new Point(1,5);
+        Point np163 = new Point(2,8);
+        Point np164 = new Point(5,3);
+        Curved cline44 = new Curved();
+        cline44.addPoints(np162,np163,np164);
+        System.out.println(cline44.lenght());
+        Point np165 = new Point(5,15);
+        Point np166 = new Point(8,10);
+        cline44.addPoints(np165,np166);
+        System.out.println(cline44.lenght());
+
+        System.out.println("");
+        System.out.println("Задача 1.5.8");
+        Point np167 = new Point(5,3);
+        Square sq = new Square(np167,23);
+        System.out.println(sq);
+        Curved cline45 = sq.createCurved();
+        System.out.println(cline45);
+        System.out.println(cline45.lenght());
+        Point np168 = new Point(15,25);
+        cline45.points.set(3,np168);
+        System.out.println(cline45);
+        System.out.println(cline45.lenght());
+
     }
-
-
-
 
 }

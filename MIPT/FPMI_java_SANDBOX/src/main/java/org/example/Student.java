@@ -16,6 +16,31 @@ public class Student {
         this.rates = rates;
     }
 
+    public int avg(){
+        int res = 0;
+        if (this.rates.length == 0) {
+            return res;
+        }else{
+            for(int i = 0; i < this.rates.length; i++){
+                res = res + this.rates[i];
+            }
+        }
+        res = res / this.rates.length;
+        return res;
+    }
+
+    public boolean isFive(){
+        boolean res = false;
+        if (this.rates.length > 0) {
+                res = true;
+                for (int i = 0; i < this.rates.length; i++){
+                    if (this.rates[i] != 5){
+                        res = false;
+                    }
+                }
+        };
+        return res;
+    }
     public String toString() {
         String res;
         res = this.name + ": ";
@@ -27,8 +52,7 @@ public class Student {
                 res = res + "," + this.rates[i];
             }
         }
-
-
-        return res;
+        res = res + ", средний бал: " + this.avg() + ", Отличник: " + this.isFive();
+        return res ;
     }
 }

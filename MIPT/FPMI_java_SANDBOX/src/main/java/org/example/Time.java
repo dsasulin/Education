@@ -1,7 +1,8 @@
 package org.example;
 
+
 public class Time {
-    int seconds;
+    private int seconds;
     Time(int second){
         this.seconds = second;
     }
@@ -10,7 +11,23 @@ public class Time {
         this(hour*3600+minute*60+second);
     }
 
+    public void whatTime(String period){
+        int res = 0 ;
+        String[] converted;
+        converted = this.convert(this.seconds);
 
+        if (period == "час") {
+            res = Integer.parseInt(converted[0]);
+        }
+        if (period == "минута") {
+            res = Integer.parseInt(converted[1]);
+        }
+        if (period == "секунда") {
+            res = Integer.parseInt(converted[2]);
+        }
+        System.out.println(res);
+
+    }
     public String format(int digit){
         if (digit < 10 ){
             return "0" + digit;
