@@ -182,7 +182,7 @@ public class Main {
         Employee petrov = new Employee(new Name ("Петров"), it);
         Employee kozlov = new Employee(new Name ("Козлов"), it);
         Employee sidorov = new Employee(new Name ("Сидоров"), it);
-        it.boss = kozlov;
+        //it.boss = kozlov;
         System.out.println(petrov);
         System.out.println(kozlov);
         System.out.println(sidorov);
@@ -268,9 +268,7 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 1.3.4");
-        it.staff.add(petrov);
-        it.staff.add(kozlov);
-        it.staff.add(sidorov);
+
         System.out.println(petrov);
         System.out.println(kozlov);
         System.out.println(sidorov);
@@ -536,6 +534,28 @@ public class Main {
         newRoute2.add(r1614);
         c1610.addRoute(newRoute2);
         System.out.println(c1610);
+
+
+        System.out.println("");
+        System.out.println("Задача 1.6.11");
+        Department IT2 = new Department("IT2");
+        Department IT3 = new Department("IT3");
+        Name new1611 = new Name("Ivanov");
+        Name new1612 = new Name("Petrov");
+        Employee em1 = new Employee(new1611,IT2);
+        Employee em2 = new Employee(new1612,IT2);
+        ArrayList<Employee> nar = new ArrayList<>();
+        nar.add(em2);
+        IT2.setStaff(nar);
+        System.out.println(IT2);
+        System.out.println(em1);
+        IT2.setBoss(em1);
+        System.out.println(IT2);
+        System.out.println(em1);
+        em1.setDept(IT3);
+        System.out.println(IT2);
+        System.out.println(IT3);
+        System.out.println(em1);
 
     }
 
