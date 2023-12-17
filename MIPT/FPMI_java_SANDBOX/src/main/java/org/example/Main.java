@@ -92,9 +92,9 @@ public class Main {
 
         System.out.println();
         System.out.println("Задача 1.1.3 ");
-        Name cleopatra1 = new Name("Клеопатра");
+        Name cleopatra1 = new Name("Клеопатра" , " 1" , "1");
         Name pushkin1 = new Name("Пушкин", "Александр", "Сергеевич");
-        Name vladimir1 = new Name("Маяковский", "Владимир");
+        Name vladimir1 = new Name("Маяковский", "Владимир", " 1");
         System.out.println(cleopatra1);
         System.out.println(pushkin1);
         System.out.println(vladimir1);
@@ -163,17 +163,17 @@ public class Main {
         System.out.println("Задача 1.2.3");
 
 
-        Human ivan = new Human(new Name("Иван" ,"Чудов"),'м');
-        Human peter = new Human(new Name("Петр" ,"Чудов"),'м');
-        Human boris = new Human(new Name("Борис" ), 'м');
-        Human maria = new Human(new Name("Мария" ), 'ж');
+        Human ivan = new Human(new Name("Иван" ,"Чудов", "Иванович"),'м');
+        Human peter = new Human(new Name("Петр" ,"Чудов", "Петрович"),'м');
+    //    Human boris = new Human(new Name("Борис" ), 'м');
+    //    Human maria = new Human(new Name("Мария" ), 'ж');
         //peter.father = ivan;
         //boris.father = peter;
         //maria.father = boris;
         System.out.println(ivan);
         System.out.println(peter);
-        System.out.println(boris);
-        System.out.println(maria);
+        //System.out.println(boris);
+       // System.out.println(maria);
 
         System.out.println();
         System.out.println("Задача 1.2.4");
@@ -556,6 +556,37 @@ public class Main {
         System.out.println(IT2);
         System.out.println(IT3);
         System.out.println(em1);
+
+        System.out.println("");
+        System.out.println("Задача 3.1.2");
+        CurvedCircled cc = new CurvedCircled();
+        Point np312 = new Point(1,1);
+        Point np313 = new Point(2,2);
+        Point np314 = new Point(3,3);
+        cc.addPoints(np312,np313,np314);
+        System.out.println(cc);
+
+        System.out.println("");
+        System.out.println("Задача 3.1.2");
+        CityWithBackRoad nc312 = new CityWithBackRoad("A");
+        CityWithBackRoad nc313 = new CityWithBackRoad("B");
+        CityWithBackRoad nc314 = new CityWithBackRoad("C");
+        Route nr315 = new Route(nc313,2);
+        Route nr316 = new Route(nc314,3);
+        ArrayList newRoutesForA = new ArrayList<>();
+        newRoutesForA.add(nr315);
+        newRoutesForA.add(nr316);
+        nc312.addRoute(newRoutesForA);
+        System.out.println(nc312);
+        System.out.println(nc313);
+        System.out.println(nc314);
+
+
+        System.out.println("");
+        System.out.println("Задача 3.1.5");
+        Point3D np315 = new Point3D(1,2,3);
+        System.out.println(np315);
+
 
     }
 

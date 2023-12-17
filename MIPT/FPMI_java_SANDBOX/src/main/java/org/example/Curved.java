@@ -61,4 +61,3 @@ public class Curved {
 
     }
 }
-// 3 + 6 +  6

@@ -29,10 +29,10 @@ class Line {
         this(new Point(x1,y1),new Point(x2,y2));
     }
 
-    public void lenght() {
+    public int lenght() {
         int l = 0;
         l = (int) sqrt(pow((this.b.x - this.a.x), 2) + pow((this.b.y - this.a.y), 2));
-        System.out.println(l);
+        return l;
     }
 
     public String toString(){

@@ -15,7 +15,7 @@ public class Home {
         this.levels = levels;
     }
 
-    public static String levels(int x){
+     private static String levels(int x){
         String res;
         res = x + " ";
         // добавлено условие < 100 чтобы было корректно 111 этажами и 211 этажами

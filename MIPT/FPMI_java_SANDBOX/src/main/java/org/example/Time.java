@@ -33,7 +33,7 @@ public class Time {
         System.out.println(res);
 
     }
-    public String format(int digit){
+    private String format(int digit){
         if (digit < 10 ){
             return "0" + digit;
         }else {
@@ -41,7 +41,7 @@ public class Time {
         }
     }
 
-    public String[] convert(int seconds){
+    private String[] convert(int seconds){
         int minute = 60;
         int hour = 3600;
         int day = 86400;

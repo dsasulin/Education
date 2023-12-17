@@ -30,9 +30,15 @@ public class Name {
     }
 
     Name(String name, String secondName, String middleName ){
-        if (name.trim().length() < 1){
+        if (name.trim().length() < 1 ){
             throw new IllegalArgumentException("Имя не может быть пустым");
         }
+//        if (secondName.trim().length() < 1 ){
+//            throw new IllegalArgumentException("Имя не может быть пустым");
+//        }
+//        if (middleName.trim().length() < 1 ){
+//            throw new IllegalArgumentException("Имя не может быть пустым");
+//        }
         this.secondName = secondName;
         this.name = name;
         this.middleName = middleName;

@@ -1,7 +1,7 @@
 package org.example;
 
 
-public class Fraction {
+final public class Fraction extends Number{
     private final int top,down;
 
     public int getTop() {
@@ -90,5 +90,25 @@ public class Fraction {
         String res;
         res = top +"/" +down;
         return res;
+    }
+
+    @Override
+    public int intValue() {
+        return 0;
+    }
+
+    @Override
+    public long longValue() {
+        return 0;
+    }
+
+    @Override
+    public float floatValue() {
+        return 0;
+    }
+
+    @Override
+    public double doubleValue() {
+        return 0;
     }
 }
