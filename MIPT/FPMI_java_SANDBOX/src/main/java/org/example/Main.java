@@ -3,6 +3,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -586,6 +587,74 @@ public class Main {
         System.out.println("Задача 3.1.5");
         Point3D np315 = new Point3D(1,2,3);
         System.out.println(np315);
+
+        System.out.println("");
+        System.out.println("Задача 3.2.3");
+        Sparrow sparrow = new Sparrow();
+        System.out.println(sparrow.Sing());
+        Cuckoo cuckoo = new Cuckoo();
+        System.out.println(cuckoo.Sing());
+        Parrot parrot = new Parrot("Пиастры Пиастры");
+        System.out.println(parrot.Sing());
+
+        System.out.println("");
+        System.out.println("Задача 3.2.4");
+        Point p324 = new Point(1,1);
+        Point p325 = new Point(4,4);
+        Point p326 = new Point(5,0);
+        Triangle triangle = new Triangle(p324,p325,p326);
+        System.out.println(triangle.square());
+
+        System.out.println("");
+        System.out.println("Задача 3.2.5");
+        Attribute atr1 = new Attribute("x", 3);
+        Attribute atr2 = new Attribute("color", "red");
+        List<Attribute> list;
+        list =  new ArrayList<>();
+        list.add(atr1);
+        list.add(atr2);
+        Points points = new Points(list);
+        System.out.println(points.getAttribute("color"));
+        Attribute atr3 = new Attribute("x", 4);
+        Attribute atr4 = new Attribute("y", 2);
+        Attribute atr5 = new Attribute("z", 5);
+        Attribute atr6 = new Attribute("time", "11:00");
+        List<Attribute> list2;
+        list2 =  new ArrayList<>();
+        list2.add(atr3);
+        list2.add(atr4);
+        list2.add(atr5);
+        list2.add(atr6);
+        Points points2 = new Points(list2);
+        System.out.println(points2.getAttribute("time"));
+
+        System.out.println("");
+        System.out.println("Задача 3.3.1");
+        Fraction nfract = new Fraction(2,2);
+        Fraction nfract2 = new Fraction(2,3);
+        Fraction nfract3 = new Fraction(3);
+
+        System.out.println("");
+        System.out.println("Задача 3.3.2");
+
+        Singable singer = new Singer();
+        singer.sing(sparrow,cuckoo,parrot);
+
+        System.out.println("");
+        System.out.println("Задача 3.3.3");
+        Circle circle = new Circle(p325,1);
+        Squareble squareble = new Area();
+        squareble.square(triangle,circle);
+
+        System.out.println("");
+        System.out.println("Задача 3.3.4");
+        Meoweble meoweble = new Cat("Рыжик");
+        meoweble.meow();
+
+
+
+
+
 
 
     }

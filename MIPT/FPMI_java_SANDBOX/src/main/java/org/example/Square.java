@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Square {
+public class Square  extends Figure{
     Point start;
     private int side;
 
@@ -54,5 +54,10 @@ public class Square {
         String res;
         res = "Квадрат в точке " + this.start + " со стороной " + side;
         return res;
+    }
+
+    @Override
+    int square() {
+        return this.side * this.side;
     }
 }

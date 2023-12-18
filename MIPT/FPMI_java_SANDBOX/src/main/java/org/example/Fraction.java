@@ -19,6 +19,9 @@ final public class Fraction extends Number{
         }
         this.down = down;
     }
+    Fraction(int top){
+        this(top, 1);
+    }
     public Fraction sum(Fraction f2){
         Fraction res = null;
         int resx,resy;
@@ -111,4 +114,7 @@ final public class Fraction extends Number{
     public double doubleValue() {
         return 0;
     }
+
+
+
 }

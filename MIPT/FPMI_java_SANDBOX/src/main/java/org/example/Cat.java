@@ -1,6 +1,6 @@
 package org.example;
 
-public class Cat {
+public class Cat implements Meoweble{
     private String name;
 
     Cat(String name){
