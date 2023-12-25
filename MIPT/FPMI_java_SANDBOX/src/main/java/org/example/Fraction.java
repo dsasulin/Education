@@ -97,22 +97,22 @@ final public class Fraction extends Number{
 
     @Override
     public int intValue() {
-        return 0;
+        return this.top/this.down;
     }
 
     @Override
     public long longValue() {
-        return 0;
+        return this.top/this.down;
     }
 
     @Override
     public float floatValue() {
-        return 0;
+        return (float)(this.top)/this.down;
     }
 
     @Override
     public double doubleValue() {
-        return 0;
+        return (double)(this.top)/this.down;
     }
 
 

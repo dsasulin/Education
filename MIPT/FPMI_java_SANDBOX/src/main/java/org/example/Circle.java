@@ -28,4 +28,9 @@ public class Circle extends Figure{
     int square() {
         return (int) (Math.PI * Math.pow(this.r, 2));
     }
+
+    @Override
+    int lenght() {
+        return (int) (2 * this.r * Math.PI);
+    }
 }

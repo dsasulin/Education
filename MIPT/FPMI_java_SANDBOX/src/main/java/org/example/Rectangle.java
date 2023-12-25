@@ -38,4 +38,9 @@ public class Rectangle extends Figure{
     int square() {
         return this.sideB * this.sideB;
     }
+
+    @Override
+    int lenght() {
+        return (sideB + sideA ) * 2 ;
+    }
 }

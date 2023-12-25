@@ -1,6 +1,6 @@
 package org.example;
 
-public class Triangle extends Figure{
+public class Triangle extends Figure implements Lenghtable{
     private Point a,b,c;
 
     public Point getA() {
@@ -35,7 +35,7 @@ public class Triangle extends Figure{
 
     @Override
     int square() {
-        int res,pp, lenAB,lenBC,lenCA;
+        int res, pp, lenAB, lenBC, lenCA;
         Line ab = new Line(this.a, this.b);
         Line bc = new Line(this.b, this.c);
         Line ca = new Line(this.c, this.a);
@@ -44,6 +44,19 @@ public class Triangle extends Figure{
         lenCA = ca.lenght();
         pp = (lenAB + lenBC + lenCA) / 2;
         res = (int) Math.sqrt(pp * (pp-lenAB) * (pp-lenBC) * (pp-lenCA));
+        return res;
+    }
+
+    @Override
+    public int  lenght() {
+        int res, lenAB, lenBC, lenCA;
+        Line ab = new Line(this.a, this.b);
+        Line bc = new Line(this.b, this.c);
+        Line ca = new Line(this.c, this.a);
+        lenAB = ab.lenght();
+        lenBC = bc.lenght();
+        lenCA = ca.lenght();
+        res = lenAB + lenBC + lenCA;
         return res;
     }
 }

@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Square  extends Figure{
+public class Square  extends Figure implements Lenghtable, Curvedable{
     Point start;
     private int side;
 
@@ -36,8 +36,8 @@ public class Square  extends Figure{
         this(new Point(x,y), side);
     }
 
-    public Curved createCurved(){
-        Curved res = null;
+    public CurvedCircled createCurved(){
+        CurvedCircled res = null;
         ArrayList<Point> points = new ArrayList<Point>();
         points.add(this.start);
         Point p2,p3,p4;
@@ -47,7 +47,7 @@ public class Square  extends Figure{
         points.add(p2);
         points.add(p3);
         points.add(p4);
-        res = new Curved(points);
+        res = new CurvedCircled(points);
         return res;
     }
     public String toString() {
@@ -59,5 +59,15 @@ public class Square  extends Figure{
     @Override
     int square() {
         return this.side * this.side;
+    }
+
+    @Override
+    public int lenght() {
+        return this.side * 4;
+    }
+
+    @Override
+    public CurvedCircled getPolygonalChain() {
+        return this.createCurved();
     }
 }

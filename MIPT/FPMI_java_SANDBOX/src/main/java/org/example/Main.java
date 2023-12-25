@@ -560,10 +560,13 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 3.1.2");
-        CurvedCircled cc = new CurvedCircled();
         Point np312 = new Point(1,1);
         Point np313 = new Point(2,2);
         Point np314 = new Point(3,3);
+        ArrayList newPoints12 = new ArrayList<>();
+        newPoints12.add(np312);
+        CurvedCircled cc = new CurvedCircled(newPoints12);
+
         cc.addPoints(np312,np313,np314);
         System.out.println(cc);
 
@@ -630,26 +633,36 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 3.3.1");
-        Fraction nfract = new Fraction(2,2);
-        Fraction nfract2 = new Fraction(2,3);
-        Fraction nfract3 = new Fraction(3);
+        System.out.println(Methods.added(2, new Fraction(3,5), 2.3));
+        System.out.println(Methods.added(3.6, new Fraction(49,12),3, new Fraction(3,2)));
+        System.out.println(Methods.added( new Fraction(1,3), 1));
+
 
         System.out.println("");
         System.out.println("Задача 3.3.2");
+        Methods.singer(cuckoo,sparrow,parrot);
 
-        Singable singer = new Singer();
-        singer.sing(sparrow,cuckoo,parrot);
 
         System.out.println("");
         System.out.println("Задача 3.3.3");
-        Circle circle = new Circle(p325,1);
-        Squareble squareble = new Area();
-        squareble.square(triangle,circle);
+        System.out.println(Methods.allArea(triangle,sq,triangle));
 
         System.out.println("");
         System.out.println("Задача 3.3.4");
-        Meoweble meoweble = new Cat("Рыжик");
-        meoweble.meow();
+        Methods.allMeow(barsik);
+
+
+        System.out.println("");
+        System.out.println("Задача 3.3.5");
+        System.out.println(Methods.allLen(triangle, sq));
+
+
+        System.out.println("");
+        System.out.println("Задача 3.3.9");
+
+        Methods.cities();
+
+
 
 
 
