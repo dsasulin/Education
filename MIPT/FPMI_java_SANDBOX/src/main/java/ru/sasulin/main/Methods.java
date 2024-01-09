@@ -7,6 +7,8 @@ import ru.sasulin.cities.CityWithBackRoad;
 import ru.sasulin.cities.Route;
 import ru.sasulin.geometry.Figure;
 import ru.sasulin.geometry.Lenghtable;
+import static java.lang.Math.pow;
+import static java.lang.Integer.parseInt;
 
 import java.util.ArrayList;
 
@@ -92,9 +94,9 @@ public class Methods {
 
     public static int xPowY(String inx, String iny){
         int x, y, res ;
-        x = Integer.parseInt(inx);
-        y = Integer.parseInt(iny);
-        res = (int) Math.pow(x,y);
+        x = parseInt(inx);
+        y = parseInt(iny);
+        res = (int) pow(x,y);
         return res;
 
     }

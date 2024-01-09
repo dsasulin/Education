@@ -1,6 +1,8 @@
 package ru.sasulin.fraction;
 
 
+import java.util.Objects;
+
 final public class Fraction extends Number{
     private final int top,down;
 
@@ -10,6 +12,19 @@ final public class Fraction extends Number{
 
     public int getDown() {
         return this.down;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fraction fraction = (Fraction) o;
+        return top == fraction.top && down == fraction.down;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(top, down);
     }
 
     public Fraction(int top, int down){
