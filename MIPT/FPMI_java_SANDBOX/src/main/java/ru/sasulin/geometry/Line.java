@@ -1,8 +1,10 @@
 package ru.sasulin.geometry;
 
+import java.util.Objects;
+
 import static java.lang.Math.*;
 
-public class Line {
+public class Line implements Cloneable{
     private Point a,b;
 
     public Point getA() {
@@ -35,8 +37,26 @@ public class Line {
         return l;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Line line = (Line) o;
+        return Objects.equals(a, line.a) && Objects.equals(b, line.b);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(a, b);
+    }
+
     public String toString(){
         String s1 = "Line from "  + a +  " to " + b +"";
         return s1;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

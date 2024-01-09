@@ -1,6 +1,7 @@
 package ru.sasulin.cities;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class City {
 
@@ -57,4 +58,16 @@ public class City {
 
     }
 
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
+        City city = (City) o;
+        return Objects.equals(name, city.name) && Objects.equals(routes, city.routes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, routes);
+    }
 }

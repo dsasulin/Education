@@ -1,6 +1,6 @@
 package ru.sasulin.geometry;
 
-public class Point3D extends Point{
+public class Point3D extends Point {
 
     int z;
 
@@ -21,4 +21,6 @@ public class Point3D extends Point{
         String s1 = "{" + super.getX() + ";" + super.getY() + ";" + getZ() + "}";
         return s1;
     }
+
+
 }

@@ -2,6 +2,7 @@ package ru.sasulin.geometry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -59,5 +60,18 @@ public class Curved {
 
         return res;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Curved curved = (Curved) o;
+        return Objects.equals(points, curved.points);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(points);
     }
 }

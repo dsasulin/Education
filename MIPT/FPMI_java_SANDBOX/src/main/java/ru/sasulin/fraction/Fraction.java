@@ -3,7 +3,7 @@ package ru.sasulin.fraction;
 
 import java.util.Objects;
 
-final public class Fraction extends Number{
+final public class Fraction extends Number implements Cloneable{
     private final int top,down;
 
     public int getTop() {
@@ -25,6 +25,11 @@ final public class Fraction extends Number{
     @Override
     public int hashCode() {
         return Objects.hash(top, down);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public Fraction(int top, int down){
