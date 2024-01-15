@@ -1,29 +1,28 @@
 package ru.sasulin.work;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.sasulin.human.Name;
 
 public class Employee {
-    Name name;
-    private Department dept;
-    public Employee(Name name, Department dept){
+    @Getter
+    @Setter
+    private Name name;
+    @Getter
+    Department dept;
+    public Employee(Name name){
         this.name = name;
-        this.dept = dept;
-        this.dept.addStaff(this);
     }
 
-    public Department getDept() {
-        return dept;
-    }
 
     public void setDept(Department dept) {
-        if(this.dept.getBoss() == this) {
-            this.dept.setBoss(new Employee(new Name("N/A"), this.dept));
-        }
-//        if (this.getDept() != dept && this.getDept() != null ) {
-//            this.dept.removeStaff(this);
-//        }
-        this.dept = dept;
-        this.getDept().staff.add(this);
+        if (dept == null && this.dept == null) return;
+        if (dept == null && this.dept != null)  {
+            this.dept.removeStaff(this);
+            dept = null;
+            return;
+        };
+        dept.addStaff(this);
     }
 
     public String toString(){

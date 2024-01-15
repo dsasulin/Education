@@ -1,42 +1,31 @@
 package ru.sasulin.work;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.sasulin.human.Name;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Department {
+    @Getter @Setter
     String name;
-    private Employee boss = new Employee(new Name("N/A"), this);
-    public ArrayList<Employee> staff = new ArrayList();
-
-    public Employee getBoss() {
-        return boss;
-    }
-
-    public void setBoss(Employee boss) {
-        // если начальник в другом отделе переходит на начальника в этот отдел
-        // убираем его из начальников старого отдела.
-        if (boss.getDept().getBoss() == boss) {
-            boss.getDept().setBoss(new Employee(new Name("N/A"), boss.getDept()));
-        }
-        this.boss = boss;
-        // если босс из другого отдела убираем его из списка сотрудников старого отдела
-        // и добавляем в новый.
-        if (boss.getDept() != this) {
-            boss.getDept().removeStaff(boss);
-            this.addStaff(boss);
-        }
-    }
-
-    public ArrayList<Employee> getStaff() {
-        return staff;
-    }
+    @Getter
+    Employee boss;
+    ArrayList<Employee> staff = new ArrayList();
 
     public Department(String name){
 
         this.name = name;
     }
+    public void setBoss(Employee boss) {
+        addStaff(boss);
+        this.boss = boss;
+    }
 
+    public List<Employee> getStaff() {
+        return new ArrayList<>(staff);
+    }
 
 
     public void setStaff(ArrayList<Employee> staff) {
@@ -46,22 +35,19 @@ public class Department {
     }
 
     public void addStaff(Employee employee) {
-        if(employee.getDept() != this ){
-            employee.getDept().removeStaff(employee);
-        }
-        if(this.staff == null) {
-            this.staff = new ArrayList<>();
-        }
-       this.staff.add(employee);
+        if (employee == null ) return;
+        if (employee.getDept() == this) return;
+        if (employee.getDept() != null) employee.getDept().removeStaff(employee);
         employee.setDept(this);
+        staff.add(employee);
     }
 
     public void removeStaff(Employee employee) {
-        int i;
-        i = this.staff.indexOf(employee);
-        if (i > -1 ) {
-            this.staff.remove(i);
-        }
+        if (employee == null ) return;
+        if (!staff.contains(employee)) return;
+        if (employee == boss) boss = null;
+        staff.remove(employee);
+        employee.setDept(null);
     }
 
 
