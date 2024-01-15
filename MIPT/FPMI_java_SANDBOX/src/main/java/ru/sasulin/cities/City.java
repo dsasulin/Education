@@ -61,9 +61,11 @@ public class City {
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof City)) return false;
+        if (o == null || !(o instanceof City)) return false;
         City city = (City) o;
-        return Objects.equals(name, city.name) && Objects.equals(routes, city.routes);
+        return Objects.equals(name, city.name)
+                && routes.containsAll(city.routes)
+                && routes.size() == city.routes.size();
     }
 
     @Override
