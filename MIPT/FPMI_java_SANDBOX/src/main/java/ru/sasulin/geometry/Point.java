@@ -45,7 +45,11 @@ public class Point implements Cloneable{
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Point clone(){
+        try {
+            return (Point)super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

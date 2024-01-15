@@ -56,7 +56,16 @@ public class Line implements Cloneable{
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Line clone() {
+        Line line = null;
+        try {
+            line = (Line) super.clone();
+            line.a = line.a.clone();
+            line.b = line.b.clone();
+            return line;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

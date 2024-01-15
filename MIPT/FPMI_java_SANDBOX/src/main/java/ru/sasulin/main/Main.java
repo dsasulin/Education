@@ -13,6 +13,8 @@ import ru.sasulin.cities.City;
 import ru.sasulin.cities.CityWithBackRoad;
 import ru.sasulin.cities.Route;
 import ru.sasulin.fraction.Fraction;
+import ru.sasulin.generic.Box;
+import ru.sasulin.generic.Storage;
 import ru.sasulin.geometry.*;
 import ru.sasulin.gun.Pistol;
 import ru.sasulin.home.Home;
@@ -206,12 +208,12 @@ public class Main {
         System.out.println("Задача 1.2.4");
 
         Department it = new Department(" IT");
-        Employee petrov = new Employee(new Name ("Петров"), it);
-        Employee kozlov = new Employee(new Name ("Козлов"), it);
-        Employee sidorov = new Employee(new Name ("Сидоров"), it);
-        System.out.println(petrov);
-        System.out.println(kozlov);
-        System.out.println(sidorov);
+        //Employee petrov = new Employee(new Name ("Петров"), it);
+        //Employee kozlov = new Employee(new Name ("Козлов"), it);
+        //Employee sidorov = new Employee(new Name ("Сидоров"), it);
+        //System.out.println(petrov);
+        //System.out.println(kozlov);
+        //System.out.println(sidorov);
 
         System.out.println("");
         System.out.println("Задача 1.3.1");
@@ -295,9 +297,9 @@ public class Main {
         System.out.println("");
         System.out.println("Задача 1.3.4");
 
-        System.out.println(petrov);
-        System.out.println(kozlov);
-        System.out.println(sidorov);
+        //System.out.println(petrov);
+        //System.out.println(kozlov);
+        //System.out.println(sidorov);
 
         System.out.println("");
         System.out.println("Задача 1.4.1");
@@ -568,20 +570,20 @@ public class Main {
         Department IT3 = new Department("IT3");
         Name new1611 = new Name("Ivanov");
         Name new1612 = new Name("Petrov");
-        Employee em1 = new Employee(new1611,IT2);
-        Employee em2 = new Employee(new1612,IT2);
+        //Employee em1 = new Employee(new1611,IT2);
+        //Employee em2 = new Employee(new1612,IT2);
         ArrayList<Employee> nar = new ArrayList<>();
-        nar.add(em2);
+        //nar.add(em2);
         IT2.setStaff(nar);
         System.out.println(IT2);
-        System.out.println(em1);
-        IT2.setBoss(em1);
+       // System.out.println(em1);
+        //IT2.setBoss(em1);
         System.out.println(IT2);
-        System.out.println(em1);
-        em1.setDept(IT3);
+       // System.out.println(em1);
+        //em1.setDept(IT3);
         System.out.println(IT2);
         System.out.println(IT3);
-        System.out.println(em1);
+        //System.out.println(em1);
 
         System.out.println("");
         System.out.println("Задача 3.1.2");
@@ -694,12 +696,12 @@ public class Main {
         System.out.println(Methods.added(7, new Fraction(11, 3), 3.21, bi1));
 
         System.out.println("");
-        System.out.println("Задача 4.1.2");
+        //System.out.println("Задача 4.1.2");
 
-        Scanner sn  = new Scanner(System.in);
-        String x = sn.nextLine();
-        String y = sn.nextLine();
-        System.out.println(xPowY (x,y));
+        //Scanner sn  = new Scanner(System.in);
+        //String x = sn.nextLine();
+        //String y = sn.nextLine();
+        //System.out.println(xPowY (x,y));
 
         System.out.println("");
         System.out.println("Задача 4.1.3");
@@ -718,27 +720,39 @@ public class Main {
         Department d421 = new Department("IT");
         Department d422 = new Department("Sales");
         System.out.println(d421);
-        Employee e421 = new Employee(n4211, d421);
-        System.out.println(e421);
+        //Employee e421 = new Employee(n4211, d421);
+        //System.out.println(e421);
         System.out.println(d421);
         System.out.println(d422);
-        d421.setBoss(e421);
-        System.out.println(e421);
+       //d421.setBoss(e421);
+        //System.out.println(e421);
         System.out.println(d421);
-        d422.setBoss(e421);
+       // d422.setBoss(e421);
         System.out.println(d421);
         System.out.println(d422);
-        System.out.println(e421);
+       // System.out.println(e421);
 
+        System.out.println("Задача 5.1.1");
+        Box box1 = new Box(3);
+        System.out.println(box1.isEmpty());
+        System.out.println(box1.getItem());
+        System.out.println(box1.isEmpty());
+        box1.setItem(5);
+        System.out.println(box1.isEmpty());
+        //int ree = (int) box1.getItem();
 
+        System.out.println("Задача 5.1.2");
+        Storage storage = new Storage(null);
+        System.out.println(storage.getObject(0));
+       // Storage storage2 = new Storage(99);
+        //System.out.println(storage2.getObject(-1));
 
-
-
-
-
-
-
-
+        System.out.println("Задача 5.1.4");
+        Student st514 = new Student("Vasia");
+        Student st515 = new Student("Peter");
+        st514.setRates(new int[]{5,5,5});
+        st515.setRates(new int[]{4,4,4});
+        System.out.println(st515.compare(st514));
 
 
 

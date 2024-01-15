@@ -55,7 +55,7 @@ public class Department {
         String res;
         res = "Сотрудники отдела " + this.name + ": ";
         for (int i = 0; i < this.staff.size(); i++ ){
-            res = res + this.staff.get(i).name + " ";
+            res = res + this.staff.get(i).getName() + " ";
         }
         return res;
     }

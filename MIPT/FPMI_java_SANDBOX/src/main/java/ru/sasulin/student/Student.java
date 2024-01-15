@@ -1,9 +1,11 @@
 package ru.sasulin.student;
 
+import ru.sasulin.compare.Compareble;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student implements Compareble {
 
     String name;
     private int[] rates;
@@ -73,4 +75,16 @@ public class Student {
         res = res + ", средний бал: " + this.avg() + ", Отличник: " + this.isFive();
         return res ;
     }
+
+    @Override
+    public int compare(Object obj) {
+        Student student2 = (Student) obj;
+        int res = 0;
+        if (this.avg() > student2.avg()) res =  1;
+        if (this.avg() == student2.avg()) res =  0;
+        if (this.avg() < student2.avg()) res =  -1;
+        return res;
+
+    }
+
 }

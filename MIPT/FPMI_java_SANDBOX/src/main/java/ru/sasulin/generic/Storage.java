@@ -1,14 +1,14 @@
-package ru.sasulin.main;
+package ru.sasulin.generic;
 
 public class Storage<T> {
 
     final T obj;
 
-    private Storage(T obj) {
+    public Storage(T obj) {
         this.obj = obj;
     }
 
-    public static<V> Storage<V> createStorage(V obj){
+    public static<T> Storage<T> createStorage(T obj){
         return new Storage<>(obj);
     }
 
@@ -18,5 +18,6 @@ public class Storage<T> {
         }
         return (Storage<T>) this.obj;
     }
+
 
 }
