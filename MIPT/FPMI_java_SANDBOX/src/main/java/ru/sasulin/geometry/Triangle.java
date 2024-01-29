@@ -1,6 +1,8 @@
 package ru.sasulin.geometry;
 
-public class Triangle extends Figure implements Lenghtable{
+import java.lang.management.MemoryPoolMXBean;
+
+public class Triangle extends Figure implements Lenghtable, Moveable {
     private Point a,b,c;
 
     public Point getA() {
@@ -59,4 +61,11 @@ public class Triangle extends Figure implements Lenghtable{
         res = lenAB + lenBC + lenCA;
         return res;
     }
+    @Override
+    public void move(int x, int y) {
+        a.move(x,y);
+        b.move(x,y);
+        c.move(x,y);
+        }
+
 }

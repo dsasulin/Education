@@ -24,11 +24,16 @@ public class Point implements Cloneable{
 
     public Point(int x, int y){
         this.x = x;
-        this.y =y;
+        this.y = y;
     }
     public String toString(){
         String s1 = "{" + x + ";" + y + "}";
         return s1;
+    }
+
+    public void move (int x, int y) {
+        this.setX(this.getX() + x);
+        this.setY(this.getY() + y);
     }
 
     @Override
@@ -52,4 +57,5 @@ public class Point implements Cloneable{
             throw new RuntimeException(e);
         }
     }
+
 }

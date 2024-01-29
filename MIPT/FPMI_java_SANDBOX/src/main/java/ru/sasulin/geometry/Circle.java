@@ -1,6 +1,8 @@
 package ru.sasulin.geometry;
 
-public class Circle extends Figure{
+import ru.sasulin.gun.Pistol;
+
+public class Circle extends Figure implements Moveable{
     private Point center;
     private int r;
 
@@ -20,7 +22,7 @@ public class Circle extends Figure{
         this.r = r;
     }
 
-    Circle(Point center, int r){
+    public Circle(Point center, int r){
         this.center = center;
         this.r = r;
     }
@@ -32,5 +34,10 @@ public class Circle extends Figure{
     @Override
     int lenght() {
         return (int) (2 * this.r * Math.PI);
+    }
+
+    @Override
+    public void move(int x, int y) {
+        this.center.move(x,y);
     }
 }

@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static ru.sasulin.main.Methods.shift;
 import static ru.sasulin.main.Methods.xPowY;
 
 public class Main {
@@ -744,7 +745,7 @@ public class Main {
         System.out.println("Задача 5.1.2");
         Storage storage = new Storage(null);
         System.out.println(storage.getObject(0));
-       // Storage storage2 = new Storage(99);
+        // Storage storage2 = new Storage(99);
         //System.out.println(storage2.getObject(-1));
 
         System.out.println("Задача 5.1.4");
@@ -754,10 +755,22 @@ public class Main {
         st515.setRates(new int[]{4,4,4});
         System.out.println(st515.compare(st514));
 
+        System.out.println("Задача 5.2.1");
+        Line l521 = new Line(new Point(-1,1),new Point(2,2));
+        System.out.println(l521);
+        System.out.println(shift(l521));
 
+        Circle c434 = new Circle(new Point(1,1),1);
+        System.out.println(c434.getCenter());
+        c434.move(-4,-2);
+        System.out.println(c434.getCenter());
 
-
-
+        FigureMover fm = new FigureMover();
+        fm.addFigure(c434);
+        fm.addFigure(l521);
+        fm.move(3,4);
+        System.out.println(c434.getCenter());
+        
 
 
     }

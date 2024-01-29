@@ -7,7 +7,7 @@ import java.util.Objects;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
-public class Curved {
+public class Curved implements Moveable{
 
     public ArrayList<Point> points = new ArrayList<Point>();
     public Curved(){}
@@ -73,5 +73,12 @@ public class Curved {
     @Override
     public int hashCode() {
         return Objects.hash(points);
+    }
+
+    @Override
+    public void move(int x, int y) {
+        for (Point point: points){
+            point.move(x,y);
+        }
     }
 }

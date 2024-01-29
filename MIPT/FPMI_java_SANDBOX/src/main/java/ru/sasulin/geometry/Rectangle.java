@@ -1,6 +1,6 @@
 package ru.sasulin.geometry;
 
-public class Rectangle extends Figure{
+public class Rectangle extends Figure implements Moveable{
     private Point start;
     private int sideA, sideB;
 
@@ -42,5 +42,10 @@ public class Rectangle extends Figure{
     @Override
     int lenght() {
         return (sideB + sideA ) * 2 ;
+    }
+
+    @Override
+    public void move(int x, int y) {
+        start.move(x,y);
     }
 }

@@ -1,8 +1,9 @@
 package ru.sasulin.geometry;
 
+import java.lang.management.MemoryPoolMXBean;
 import java.util.ArrayList;
 
-public class Square  extends Figure implements Lenghtable, Curvedable{
+public class Square  extends Figure implements Lenghtable, Curvedable, Moveable {
     Point start;
     private int side;
 
@@ -70,4 +71,10 @@ public class Square  extends Figure implements Lenghtable, Curvedable{
     public CurvedCircled getPolygonalChain() {
         return this.createCurved();
     }
+
+    @Override
+    public void move(int x, int y) {
+        start.move(x,y);
+        }
+
 }

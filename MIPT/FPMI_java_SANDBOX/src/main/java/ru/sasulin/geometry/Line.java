@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import static java.lang.Math.*;
 
-public class Line implements Cloneable{
+public class Line extends Figure implements Cloneable, Moveable{
     private Point a,b;
 
     public Point getA() {
@@ -67,5 +67,16 @@ public class Line implements Cloneable{
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public int square() {
+        return 0;
+    }
+
+    @Override
+    public void move(int x, int y) {
+        a.move(x,y);
+        b.move(x,y);
     }
 }

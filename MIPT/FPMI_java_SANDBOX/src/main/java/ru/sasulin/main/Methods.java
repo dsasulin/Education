@@ -5,8 +5,12 @@ import ru.sasulin.animals.Meoweble;
 import ru.sasulin.cities.City;
 import ru.sasulin.cities.CityWithBackRoad;
 import ru.sasulin.cities.Route;
+import ru.sasulin.generic.Storage;
 import ru.sasulin.geometry.Figure;
 import ru.sasulin.geometry.Lenghtable;
+import ru.sasulin.geometry.Line;
+import ru.sasulin.geometry.Point;
+
 import static java.lang.Math.pow;
 import static java.lang.Integer.parseInt;
 
@@ -100,4 +104,17 @@ public class Methods {
         return res;
 
     }
+
+    public static Line shift(Line line){
+        Point p1 = line.getA().clone();
+        Point p2 = line.getB().clone();
+        if (p1.getX() > 0) {p1.setX(p1.getX()+10);}
+        if (p1.getX() < 0) {p1.setX(p1.getX()-10);}
+        return new Line(p1,p2);
+    }
+
+    public static double max(Storage[] storages){
+        return 0;
+    }
+
 }
