@@ -1,24 +1,25 @@
 package ru.sasulin.geometry;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FigureMover implements Moveable{
 
-    private ArrayList<Figure> figures = new ArrayList<Figure>();
+    private List<Moveable> Moveable;
 
     public FigureMover() {}
 
-    public ArrayList<Figure> getFigures() {
-        return new ArrayList<Figure>(figures);
+    public ArrayList<Moveable> getFigures() {
+        return new ArrayList<Moveable>(Moveable);
     }
 
     public void addFigure(Figure figure){
-        this.figures.add(figure);
+        this.Moveable.add(figure);
     }
 
     @Override
     public void move(int x, int y) {
-        for (Figure figure: figures){
+        for (Moveable figure: Moveable){
             figure.move(x,y);
         }
     }

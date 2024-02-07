@@ -20,6 +20,7 @@ import ru.sasulin.gun.Pistol;
 import ru.sasulin.home.Home;
 import ru.sasulin.human.Human;
 import ru.sasulin.human.Name;
+import ru.sasulin.student.Save;
 import ru.sasulin.student.Student;
 import ru.sasulin.time.Time;
 import ru.sasulin.work.Department;
@@ -218,7 +219,12 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 1.3.1");
-        Student vasia = new Student("vasia", new int[]{3,4,5});
+        ArrayList<Integer> grades = new ArrayList<>();
+        grades.add(3);
+        grades.add(4);
+        grades.add(5);
+        System.out.println(grades);
+        Student vasia = new Student("vasia", grades);
         System.out.println(vasia);
         Student petia = new Student("petia");
         //petia.rates = vasia.rates;
@@ -367,7 +373,8 @@ public class Main {
 
         System.out.println("");
         System.out.println("Задача 1.4.7");
-        Student nvasia = new Student("Вася",new int[]{3,4,5});
+
+        Student nvasia = new Student("Вася",grades);
         Student max = new Student("Максим");
         System.out.println(nvasia);
         System.out.println(max);
@@ -418,13 +425,13 @@ public class Main {
         System.out.println("");
         System.out.println("Задача 1.5.6");
 
-        Student v = new Student("Вася", new int[]{3,4,5,4});
+        Student v = new Student("Вася", grades);
         Student v1 = new Student("Вася2");
         System.out.println(v.avg());
         System.out.println(v);
         System.out.println(v1.avg());
         System.out.println(v1);
-        Student v3 = new Student("Петя", new int[]{5,5,5,5});
+        Student v3 = new Student("Петя", grades);
         System.out.println(v3.avg());
         System.out.println(v3.isFive());
         System.out.println(v3);
@@ -751,8 +758,14 @@ public class Main {
         System.out.println("Задача 5.1.4");
         Student st514 = new Student("Vasia");
         Student st515 = new Student("Peter");
-        st514.setRates(new int[]{5,5,5});
-        st515.setRates(new int[]{4,4,4});
+        ArrayList<Integer> newGrades = new ArrayList<>();
+        newGrades.add(5);
+        newGrades.add(5);
+        newGrades.add(5);
+        ArrayList<Integer> newGrades2 = new ArrayList<>();
+        newGrades.add(4);
+        newGrades.add(4);
+        newGrades.add(4);
         System.out.println(st515.compare(st514));
 
         System.out.println("Задача 5.2.1");
@@ -765,14 +778,26 @@ public class Main {
         c434.move(-4,-2);
         System.out.println(c434.getCenter());
 
-        FigureMover fm = new FigureMover();
-        fm.addFigure(c434);
-        fm.addFigure(l521);
-        fm.move(3,4);
-        System.out.println(c434.getCenter());
-        
 
-
+        Student std12 = new Student("Vasia");
+        std12.addGrade(5);
+        std12.undo();
+        std12.addGrade(5);
+        std12.addGrade(4);
+        std12.addGrade(2);
+        System.out.println(std12);
+        std12.removeGrade(2);
+        System.out.println(std12);
+        std12.undo();
+        System.out.println(std12);
+        std12.setName("ddf");
+        System.out.println(std12);
+        std12.undo();
+        System.out.println(std12);
+        Student stud = std12;
+        System.out.println(stud);
+        Save save =std12.getSave();
+        System.out.println(save);
     }
 
 }
