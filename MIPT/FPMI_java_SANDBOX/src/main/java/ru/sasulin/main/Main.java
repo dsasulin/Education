@@ -30,10 +30,8 @@ import ru.sasulin.work.Employee;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static ru.sasulin.main.Methods.shift;
-import static ru.sasulin.main.Methods.xPowY;
 
 public class Main {
     public static void main(String[] args) {
@@ -791,13 +789,16 @@ public class Main {
         std12.undo();
         System.out.println(std12);
         std12.setName("ddf");
+        Save ns = std12.getSave();
         System.out.println(std12);
         std12.undo();
         System.out.println(std12);
-        Student stud = std12;
-        System.out.println(stud);
-        Save save =std12.getSave();
-        System.out.println(save);
+        Student stud3 = std12;
+        System.out.println(stud3);
+        //Save save =std12.getSave();
+        //System.out.println(save);
+        ns.load();
+        System.out.println(std12);
     }
 
 }

@@ -1,24 +1,27 @@
 package ru.sasulin.student;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.sasulin.compare.Compareble;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
-public class Student implements Compareble {
+public class Student implements Compareble, Action {
 
+    @Getter
     private String name;
 
     private ArrayList<Integer> rates = new ArrayList<Integer>();
 
-    private Stack<Student> history = new Stack<>();
+    private final Deque<Action> actions = new ArrayDeque<>();
+
 
     public Student(String name){
         this(name,new ArrayList<Integer>());
     }
     public Student(String name, ArrayList<Integer> rates){
-        for(int i = 0; i < rates.size(); i++){
-            if (rates.get(i) < 2 || rates.get(i) > 5){
+        for (Integer rate : rates) {
+            if (rate < 2 || rate > 5) {
                 throw new IllegalArgumentException("Оценка не может быть меньше 2 и больше 5");
             }
         }
@@ -26,17 +29,10 @@ public class Student implements Compareble {
         this.rates = rates;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
-        history.push(new Student(this.name, (ArrayList<Integer>) this.rates.clone()));
+        String tmp = this.name;
+        actions.push(()->this.name=tmp);
         this.name = name;
-    }
-
-    public void setRates(ArrayList<Integer> rates) {
-        this.rates = rates;
     }
 
     public ArrayList<Integer> getRates() {
@@ -47,34 +43,28 @@ public class Student implements Compareble {
         if (grade < 2 || grade > 5){
             throw new IllegalArgumentException("Оценка не может быть меньше 2 и больше 5");
         }
-        history.push(new Student(this.name, (ArrayList<Integer>) this.rates.clone()));
+        actions.push(()->rates.remove((Object)grade));
         this.rates.add(grade);
     };
-    
+
 
     public void removeGrade(int index){
-        history.push(new Student(this.name, (ArrayList<Integer>) this.rates.clone()));
+        int grade = rates.get(index);
+        actions.push(()->rates.add(index,grade));
         this.rates.remove(index);
     };
 
     public void undo(){
-        Student tmp;
-        tmp = this.history.pop();
-        this.name = tmp.name;
-        this.rates = tmp.rates;
+        actions.pop().make();
     };
 
     public Save getSave(){
-        Save save = new Save("");
-        Student tmp = history.peek();
-        save.name = tmp.name;
-        save.rates = tmp.rates;
-        return save;
+        return new SaveImpl();
     };
 
     public int avg(){
         int res = 0;
-        if (this.rates.size() == 0) {
+        if (this.rates.isEmpty()) {
             return res;
         }else{
             for(int i = 0; i < this.rates.size(); i++){
@@ -87,29 +77,29 @@ public class Student implements Compareble {
 
     public boolean isFive(){
         boolean res = false;
-        if (this.rates.size() > 0) {
+        if (!this.rates.isEmpty()) {
                 res = true;
-                for (int i = 0; i < this.rates.size(); i++){
-                    if (this.rates.get(i) != 5){
-                        res = false;
-                    }
+            for (Integer rate : this.rates) {
+                if (rate != 5) {
+                    res = false;
                 }
+            }
         };
         return res;
     }
     public String toString() {
-        String res;
-        res = this.name + ": ";
+        StringBuilder res;
+        res = new StringBuilder(this.name + ": ");
         int i = 0;
         for (i = 0; i < this.rates.size(); i++) {
             if (i == 0) {
-                res = res + this.rates.get(i);
+                res.append(this.rates.get(i));
             }else {
-                res = res + "," + this.rates.get(i);
+                res.append(",").append(this.rates.get(i));
             }
         }
-        res = res + ", средний бал: " + this.avg() + ", Отличник: " + this.isFive();
-        return res ;
+        res.append(", средний бал: ").append(this.avg()).append(", Отличник: ").append(this.isFive());
+        return res.toString();
     }
 
     @Override
@@ -122,5 +112,19 @@ public class Student implements Compareble {
         return res;
 
     }
+    private class SaveImpl implements Save{
+        String name = Student.this.name;
+        List<Integer> rates = new ArrayList<>(Student.this.rates);
 
+        @Override
+        public void load() {
+            Student.this.name = name;
+            Student.this.rates.clear();
+            Student.this.rates.addAll(rates);
+        }
+    }
+    @Override
+    public void make() {
+
+    }
 }
