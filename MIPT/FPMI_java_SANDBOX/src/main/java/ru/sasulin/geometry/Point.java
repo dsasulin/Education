@@ -2,7 +2,7 @@ package ru.sasulin.geometry;
 
 import java.util.Objects;
 
-public class Point implements Cloneable{
+public class Point implements Cloneable, Comparable{
 
     private int x,y;
 
@@ -27,8 +27,7 @@ public class Point implements Cloneable{
         this.y = y;
     }
     public String toString(){
-        String s1 = "{" + x + ";" + y + "}";
-        return s1;
+        return "{" + x + ";" + y + "}";
     }
 
     public void move (int x, int y) {
@@ -58,4 +57,12 @@ public class Point implements Cloneable{
         }
     }
 
+    @Override
+    public int compareTo(Object o) {
+        int res = 0;
+        Point np = (Point) o;
+        if(np.x < this.x) {res = 1;}
+        if(np.x > this.x) {res = -1;}
+        return res;
+    }
 }

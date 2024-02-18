@@ -18,8 +18,7 @@ public class Point3D extends Point {
 
     }
     public String toString(){
-        String s1 = "{" + super.getX() + ";" + super.getY() + ";" + getZ() + "}";
-        return s1;
+        return "{" + super.getX() + ";" + super.getY() + ";" + getZ() + "}";
     }
 
 

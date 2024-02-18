@@ -51,8 +51,7 @@ public class Line extends Figure implements Cloneable, Moveable{
     }
 
     public String toString(){
-        String s1 = "Line from "  + a +  " to " + b +"";
-        return s1;
+        return "Line from "  + a +  " to " + b;
     }
 
     @Override

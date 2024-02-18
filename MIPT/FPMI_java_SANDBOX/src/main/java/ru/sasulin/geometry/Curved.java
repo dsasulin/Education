@@ -2,6 +2,7 @@ package ru.sasulin.geometry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import static java.lang.Math.pow;
@@ -14,6 +15,9 @@ public class Curved implements Moveable{
     public Curved(Point[] points){
         this.points = new ArrayList<>(Arrays.asList(points));
     }
+    public Curved(List<Point> points){
+        this.points = new ArrayList<>(points);
+    }
     Curved(ArrayList<Point> points){
         this.points = points;
     }
@@ -22,21 +26,19 @@ public class Curved implements Moveable{
         Curved res = null;
         ArrayList<Point> newPoints = null;
         newPoints = this.points;
-        for (int i = 0; i < point.length; i++){
-            newPoints.add(point[i]);
-        }
+        newPoints.addAll(Arrays.asList(point));
         res = new Curved(newPoints);
         return res;
     }
     public void addPointsArray(Point[] points){
-        for (int i = 0; i < points.length; i++){
-            this.addPoints(points[i]);
+        for (Point point : points) {
+            this.addPoints(point);
         }
     }
 
     public int lenght() {
         int res = 0;
-        if (this.points.size() == 0 ||  this.points.size() == 1 ){
+        if (this.points.isEmpty() ||  this.points.size() == 1 ){
             return res;
         }else {
             for (int i = 0; i < this.points.size() - 1; i++) {
@@ -47,18 +49,18 @@ public class Curved implements Moveable{
     }
 
     public String toString() {
-        String res;
-        res = "Линия ";
+        StringBuilder res;
+        res = new StringBuilder("Линия ");
         int i ;
         for (i = 0; i < this.points.size(); i++) {
             if (i == 0) {
-                res = res + this.points.get(i);
+                res.append(this.points.get(i));
             }else {
-                res = res + "," + this.points.get(i);
+                res.append(",").append(this.points.get(i));
             }
         }
 
-        return res;
+        return res.toString();
 
     }
 

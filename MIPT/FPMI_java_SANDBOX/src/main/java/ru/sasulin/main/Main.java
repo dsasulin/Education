@@ -29,8 +29,12 @@ import ru.sasulin.work.Employee;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
 import static ru.sasulin.main.Methods.shift;
 
 public class Main {
@@ -799,6 +803,44 @@ public class Main {
         //System.out.println(save);
         ns.load();
         System.out.println(std12);
+
+        // Stream
+        Point p2024 = new Point(1,1);
+        Point p20242 = new Point(-1,-1);
+        Point p20243 = new Point(2,2);
+        Point p20244 = new Point(-2,-2);
+        Point p20245 = new Point(3,3);
+        Point p20246 = new Point(-3,-3);
+        Point p20247 = new Point(-3,-3);
+        List<Point> arPoints = new ArrayList<>();
+        arPoints.add(p2024);
+        arPoints.add(p20245);
+        arPoints.add(p20242);
+        arPoints.add(p20247);
+        arPoints.add(p20243);
+        arPoints.add(p20244);
+        arPoints.add(p20246);
+
+        System.out.println(arPoints);
+        Curved cfdhbvbvb = new Curved(arPoints);
+        System.out.println(cfdhbvbvb);
+        List stream =arPoints.stream()
+                .distinct()
+                .map(x-> {
+                        int x1,y1;
+                        x1 = x.getX();
+                        y1 = x.getY();
+                        if (y1 < 0) { y1 = y1 * -1;};
+                        return new Point(x1,y1);
+                        }
+                )
+                .sorted()
+                .toList();
+        System.out.println(stream);
+        Curved cfdhbvbvb2 = new Curved(stream);
+        System.out.println(cfdhbvbvb2);
+
+
     }
 
 }
