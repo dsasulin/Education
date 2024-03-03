@@ -27,18 +27,22 @@ import ru.sasulin.work.Department;
 import ru.sasulin.work.Employee;
 
 
+import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 import static ru.sasulin.main.Methods.shift;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Задача 2.1 -  " + Block12.fraction(5.25));
         System.out.println("Задача 2.2 -  " + Block12.sumLastNums(4568));
         System.out.println("Задача 2.3 -  " + Block12.charToNum('5'));
@@ -827,7 +831,7 @@ public class Main {
         List stream =arPoints.stream()
                 .distinct()
                 .map(x-> {
-                        int x1,y1;
+                        int x1, y1;
                         x1 = x.getX();
                         y1 = x.getY();
                         if (y1 < 0) { y1 = y1 * -1;};
@@ -840,6 +844,22 @@ public class Main {
         Curved cfdhbvbvb2 = new Curved(stream);
         System.out.println(cfdhbvbvb2);
 
+        Curved curved12 = arPoints.stream()
+                .map(x -> new Point(x.getX(), Math.abs(x.getY())))
+                .distinct()
+                .sorted()
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Curved::new));
+        System.out.println(curved12);
+
+        Path path = Path.of("src/main/resources/data.txt");
+
+        var res = Files.lines(path)
+                .map(l->l.split(":"))
+                .filter(array -> array.length>1)
+                .map(array->new String[]{array[0],array[1]})
+                .collect(Collectors.groupingBy(array->array[1], Collectors.mapping(array-> array[0], Collectors.toList())));
+
+        System.out.println(res);
 
     }
 
