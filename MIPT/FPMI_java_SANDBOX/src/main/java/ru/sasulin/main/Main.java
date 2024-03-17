@@ -1,6 +1,18 @@
 package ru.sasulin.main;
 
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSourceResolvable;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.ResolvableType;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.Resource;
 import ru.sasulin.animals.Cat;
 import ru.sasulin.animals.Cuckoo;
 import ru.sasulin.animals.Parrot;
@@ -20,6 +32,8 @@ import ru.sasulin.gun.Pistol;
 import ru.sasulin.home.Home;
 import ru.sasulin.human.Human;
 import ru.sasulin.human.Name;
+import ru.sasulin.reflection.MyEntity;
+import ru.sasulin.reflection.Validator;
 import ru.sasulin.student.Save;
 import ru.sasulin.student.Student;
 import ru.sasulin.time.Time;
@@ -28,13 +42,11 @@ import ru.sasulin.work.Employee;
 
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -861,6 +873,16 @@ public class Main {
 
         System.out.println(res);
 
+        ApplicationContext ac = new AnnotationConfigApplicationContext("ru.sasulin.spring");
+        Object ob = ac.getBean("bean1");
+        System.out.println(ob);
+        Object ob2 = ac.getBean("bean2");
+        Object ob3 = ac.getBean("bean2");
+        System.out.println(ob2);
+        System.out.println(ob3);
+
+        MyEntity mn = new MyEntity();
+        Validator.validate(mn);
     }
 
 }
