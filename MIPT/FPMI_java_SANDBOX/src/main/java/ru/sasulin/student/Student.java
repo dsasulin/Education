@@ -5,9 +5,11 @@ import lombok.Setter;
 import ru.sasulin.compare.Compareble;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Student implements Compareble, Action {
 
+    private Predicate<Integer> predicate;
     @Getter
     private String name;
 
@@ -15,18 +17,17 @@ public class Student implements Compareble, Action {
 
     private final Deque<Action> actions = new ArrayDeque<>();
 
-
-    public Student(String name){
-        this(name,new ArrayList<Integer>());
+    Student(String name) {
+        this.name = name;
     }
-    public Student(String name, ArrayList<Integer> rates){
-        for (Integer rate : rates) {
-            if (rate < 2 || rate > 5) {
-                throw new IllegalArgumentException("Оценка не может быть меньше 2 и больше 5");
+    public Student(String name, Predicate<Integer> rule, int... marks) {
+        this(name);
+        this.predicate = rule;
+        for (int i : marks) {
+            if (predicate.test(i)) {
+                this.rates.add(i);
             }
         }
-        this.name = name;
-        this.rates = rates;
     }
 
     public void setName(String name) {
