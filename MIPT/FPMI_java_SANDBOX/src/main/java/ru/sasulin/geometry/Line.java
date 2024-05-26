@@ -1,39 +1,32 @@
 package ru.sasulin.geometry;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
 import static java.lang.Math.*;
 
-public class Line extends Figure implements Cloneable, Moveable{
-    private Point a,b;
+@Setter
+@Getter
+public class Line<T extends Point> implements Lenghtable, Cloneable, Moveable {
+    private T start,end;
 
-    public Point getA() {
-        return a;
+    public Line(T start, T end) {
+        this.start = start;
+        this.end = end;
+    }
+    public static Line<Point> of(int x1, int y1, int x2, int y2) {
+        return new Line<>(new Point(x1, y1), new Point(x2, y2));
     }
 
-    public void setA(Point a) {
-        this.a = new Point(a.getX(),a.getY());
-    }
-
-    public Point getB() {
-        return b;
-    }
-
-    public void setB(Point b) {
-        this.b = new Point(b.getX(),b.getY());
-    }
-
-    public Line(Point a, Point b){
-        this.a = new Point(a.getX(),a.getY());
-        this.b = new Point(b.getX(),b.getY());
-    }
-    Line(int x1, int y1, int x2, int y2){
-        this(new Point(x1,y1),new Point(x2,y2));
+    public static <E extends Point> Line<E> of(E start, E end) {
+        return new Line<>(start, end);
     }
 
     public int lenght() {
         int l = 0;
-        l = (int) sqrt(pow((this.b.getX() - this.a.getX()), 2) + pow((this.b.getY() - this.a.getY()), 2));
+        l = (int) sqrt(pow((this.end.getX() - this.start.getX()), 2) + pow((this.end.getY() - this.start.getY()), 2));
         return l;
     }
 
@@ -42,16 +35,16 @@ public class Line extends Figure implements Cloneable, Moveable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Line line = (Line) o;
-        return Objects.equals(a, line.a) && Objects.equals(b, line.b);
+        return Objects.equals(start, line.start) && Objects.equals(end, line.end);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(a, b);
+        return Objects.hash(start, end);
     }
 
     public String toString(){
-        return "Line from "  + a +  " to " + b;
+        return "Line from "  + start +  " to " + end;
     }
 
     @Override
@@ -59,8 +52,8 @@ public class Line extends Figure implements Cloneable, Moveable{
         Line line = null;
         try {
             line = (Line) super.clone();
-            line.a = line.a.clone();
-            line.b = line.b.clone();
+            line.start = line.start.clone();
+            line.end = line.end.clone();
             return line;
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
@@ -69,13 +62,8 @@ public class Line extends Figure implements Cloneable, Moveable{
     }
 
     @Override
-    public int square() {
-        return 0;
-    }
-
-    @Override
     public void move(int x, int y) {
-        a.move(x,y);
-        b.move(x,y);
+        start.move(x,y);
+        end.move(x,y);
     }
 }

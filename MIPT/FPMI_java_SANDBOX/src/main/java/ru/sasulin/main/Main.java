@@ -25,8 +25,7 @@ import ru.sasulin.cities.City;
 import ru.sasulin.cities.CityWithBackRoad;
 import ru.sasulin.cities.Route;
 import ru.sasulin.fraction.Fraction;
-import ru.sasulin.generic.Box;
-import ru.sasulin.generic.Storage;
+import ru.sasulin.generic.*;
 import ru.sasulin.geometry.*;
 import ru.sasulin.gun.Pistol;
 import ru.sasulin.home.Home;
@@ -51,6 +50,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
+import static ru.sasulin.generic.Utils.*;
 import static ru.sasulin.main.Methods.shift;
 
 public class Main {
@@ -556,7 +556,7 @@ public class Main {
         System.out.println(l166);
         System.out.println(l167);
         Point p169 = new Point(4,4);
-        l166.setB(p169);
+        l166.setEnd(p169);
         System.out.println(l166);
         System.out.println(l167);
 
@@ -759,19 +759,36 @@ public class Main {
        // System.out.println(e421);
 
         System.out.println("Задача 5.1.1");
-        Box box1 = new Box(3);
-        System.out.println(box1.isEmpty());
+        Box box1 = new Box();
+        System.out.println(box1.isFull());
         System.out.println(box1.getItem());
-        System.out.println(box1.isEmpty());
-        box1.setItem(5);
-        System.out.println(box1.isEmpty());
+        System.out.println(box1.isFull());
+        box1.putItem(5);
+        System.out.println(box1.isFull());
         //int ree = (int) box1.getItem();
 
         System.out.println("Задача 5.1.2");
-        Storage storage = new Storage(null);
-        System.out.println(storage.getObject(0));
+        //Storage storage = new Storage(null);
+        //System.out.println(storage.getObject(0));
         // Storage storage2 = new Storage(99);
         //System.out.println(storage2.getObject(-1));
+        Storage<Number> numberStorage1 = Storage.createStorage(null);
+        Number num = numberStorage1.getObject(0);
+        System.out.println(num);
+
+        Storage<Number> numberStorage2 = Storage.createStorage(99);
+        Number num2 = numberStorage2.getObject(-1);
+        int res = (int) num2 + 5;
+        System.out.println(res);
+        System.out.println(num2);
+
+        Storage<String> stringStorage = Storage.createStorage(null);
+        String str = stringStorage.getObject("default");
+        System.out.println(str);
+
+        Storage<String> stringStorage2 = Storage.createStorage("hello");
+        String str2 = stringStorage2.getObject("hello world");
+        System.out.println(str2);
 
         System.out.println("Задача 5.1.4");
         Student st514 = new Student("Vasia");
@@ -786,10 +803,93 @@ public class Main {
         newGrades.add(4);
         System.out.println(st515.compare(st514));
 
+        System.out.println("Задача 5.1.5");
+        Line<Point3D> point3DLine = new Line<>(new Point3D(5, 2, 3), new Point3D(3, 2, 1));
+        System.out.println(point3DLine);
+        point3DLine.setEnd(new Point3D(4, 5, 6));
+        System.out.println(point3DLine);
+        System.out.println(point3DLine.getStart());
+
+        Line<Point> point2DLine = new Line<>(new Point(-7, 2), new Point(3, 4));
+        System.out.println(point2DLine);
+
         System.out.println("Задача 5.2.1");
         Line l521 = new Line(new Point(-1,1),new Point(2,2));
         System.out.println(l521);
         System.out.println(shift(l521));
+        moveX(point3DLine);
+        moveX(point2DLine);
+        System.out.println(point3DLine);
+        System.out.println(point2DLine);
+
+        System.out.println("Задача 5.2.2");
+        Storage<Double> doubleStorage = Storage.createStorage(6.0);
+        Storage<Integer> integerStorage = Storage.createStorage(5);
+        Storage<Integer> integerStorage2 = Storage.createStorage(19);
+        //System.out.println(findMax(doubleStorage,integerStorage,integerStorage2));
+
+
+        System.out.println("Задача 5.2.3");
+        Box<Point3D> point3DBox = new Box<>();
+        putPoint3D(point3DBox, new Point3D(4, 5, 6));
+        System.out.println(point3DBox.getItem());
+
+
+        System.out.println("Задача 5.2.4");
+        List<Number> numberList = new ArrayList<>();
+        fillList(numberList);
+        System.out.println(numberList);
+
+        System.out.println("Задача 5.3.1");
+        List<String> strings = List.of("qwerty", "asdfg", "zx");
+        System.out.println(map(strings, new StringLength()));
+
+        List<Integer> integers = List.of(1, -3, 7);
+        System.out.println(map(integers, new Positive()));
+
+        Integer[] arr1 = new Integer[] {1, -2, 11};
+        Integer[] arr2 = new Integer[] {-5, 3, -9};
+        Integer[] arr3 = new Integer[] {23, 0, -11};
+        List<Integer[]> list111 = List.of(arr1, arr2, arr3);
+        System.out.println(map(list111, new ListMax()));
+
+        System.out.println("Задача 5.3.2");
+        List<String> strings532 = List.of("qwerty", "asdfg", "zx");
+        System.out.println(filter(strings532, new More3CharFilter()));
+
+        List<Integer> integers532 = List.of(1, -3, 7);
+        System.out.println(filter(integers532, new NegativeFilter()));
+
+        Integer[] arr1532 = new Integer[] {-1, -2, -11};
+        Integer[] arr2532 = new Integer[] {-5, -3, -9};
+        Integer[] arr3532 = new Integer[] {23, 0, -11};
+        List<Integer[]> list532 = List.of(arr1532, arr2532, arr3532);
+        for (Integer[] integers1 : filter(list532, new NegativeArrays())) {
+            for (Integer i : integers1) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Задача 5.3.3");
+
+        List<String> strings533 = List.of("qwerty", "asdfg", "zx");
+        System.out.println(reduce(strings533, new Concat()));
+
+        List<String> strings2533 = List.of();
+        System.out.println(reduce(strings2533, new Concat()));
+
+        List<Integer> integers533 = List.of(1, -3, 7);
+        System.out.println(reduce(integers533, new TotalSum()));
+
+        List<Integer> integers2533 = List.of();
+        System.out.println(reduce(integers2533, new TotalSum()));
+
+        List<Integer> integers3533 = List.of(11, 3, -9, 5, -17);
+        List<List<Integer>> listList = List.of(integers3533);
+        int res533 = reduce(map(listList, List::size), (x, y) -> x + y).orElse(0);
+        System.out.println(res533);
+        
 
         Circle c434 = new Circle(new Point(1,1),1);
         System.out.println(c434.getCenter());

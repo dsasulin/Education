@@ -106,8 +106,8 @@ public class Methods {
     }
 
     public static Line shift(Line line){
-        Point p1 = line.getA().clone();
-        Point p2 = line.getB().clone();
+        Point p1 = line.getStart().clone();
+        Point p2 = line.getEnd().clone();
         if (p1.getX() > 0) {p1.setX(p1.getX()+10);}
         if (p1.getX() < 0) {p1.setX(p1.getX()-10);}
         return new Line(p1,p2);

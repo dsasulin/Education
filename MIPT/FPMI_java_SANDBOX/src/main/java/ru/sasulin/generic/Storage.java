@@ -1,23 +1,19 @@
 package ru.sasulin.generic;
 
-public class Storage<T> {
+public final class Storage<T> {
+    private final T obj;
 
-    final T obj;
-
-    public Storage(T obj) {
+    private Storage(T obj) {
         this.obj = obj;
     }
 
-    public static<T> Storage<T> createStorage(T obj){
-        return new Storage<>(obj);
+    public static <V> Storage<V> createStorage(V v) {
+        return new Storage<>(v);
     }
 
-    public <T>  Storage<T> getObject(T defaultValue){
-        if (this.obj == null) {
-            return new Storage<T>(defaultValue);
-        }
-        return (Storage<T>) this.obj;
+    public T getObject(T defaultValue) {
+        if (obj == null) return defaultValue;
+        else return this.obj;
     }
-
 
 }
