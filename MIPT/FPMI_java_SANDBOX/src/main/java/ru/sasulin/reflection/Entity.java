@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract  class Entity {
+public class Entity {
     //@Override
     @SneakyThrows
     public final String ToString(){

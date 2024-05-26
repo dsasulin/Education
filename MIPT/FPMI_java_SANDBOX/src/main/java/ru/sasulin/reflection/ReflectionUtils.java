@@ -23,6 +23,6 @@ public class ReflectionUtils {
     public static void lineConector(Line line1, Line line2){
         Field  lineStart = Line.class.getDeclaredField("a");
         lineStart.setAccessible(true);
-        lineStart.set(line2,line1.getB());
+        lineStart.set(line2,line1.getEnd());
     }
 }
