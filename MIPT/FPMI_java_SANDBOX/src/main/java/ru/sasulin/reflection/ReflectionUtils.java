@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import ru.sasulin.geometry.Line;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,5 +25,15 @@ public class ReflectionUtils {
         Field  lineStart = Line.class.getDeclaredField("a");
         lineStart.setAccessible(true);
         lineStart.set(line2,line1.getEnd());
+    }
+    public static <T> T cache(T objectIncome){
+
+        ClassLoader objectIncomeClassLoader = objectIncome.getClass().getClassLoader();
+        Class[] objectIncomeInterfaces = objectIncome.getClass().getInterfaces();
+
+        T proxyObject = (T) Proxy.newProxyInstance(objectIncomeClassLoader,
+                objectIncomeInterfaces,
+                new ObjectInvocationHandler<>(objectIncome));
+        return proxyObject;
     }
 }
