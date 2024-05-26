@@ -1,18 +1,12 @@
 package ru.sasulin.main;
 
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.MessageSourceResolvable;
-import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.ResolvableType;
-import org.springframework.core.env.Environment;
-import org.springframework.core.io.Resource;
+import org.springframework.context.annotation.ComponentScan;
 import ru.sasulin.animals.Cat;
 import ru.sasulin.animals.Cuckoo;
 import ru.sasulin.animals.Parrot;
@@ -31,6 +25,8 @@ import ru.sasulin.gun.Pistol;
 import ru.sasulin.home.Home;
 import ru.sasulin.human.Human;
 import ru.sasulin.human.Name;
+import ru.sasulin.jdbc.DepartmentRepo;
+import ru.sasulin.jdbc.EmployeeRepo;
 import ru.sasulin.reflection.MyEntity;
 import ru.sasulin.reflection.Validator;
 import ru.sasulin.student.Save;
@@ -38,21 +34,18 @@ import ru.sasulin.student.Student;
 import ru.sasulin.time.Time;
 import ru.sasulin.work.Department;
 import ru.sasulin.work.Employee;
-
-
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
 import static ru.sasulin.generic.Utils.*;
 import static ru.sasulin.main.Methods.shift;
-
+@SpringBootApplication
+@ComponentScan("ru.sasulin.jdbc")
+@EntityScan("ru.sasulin.jdbc")
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Задача 2.1 -  " + Block12.fraction(5.25));
@@ -242,7 +235,7 @@ public class Main {
         grades.add(4);
         grades.add(5);
         System.out.println(grades);
-        Student vasia = new Student("vasia", grades);
+        Student vasia = new Student("vasia");
         System.out.println(vasia);
         Student petia = new Student("petia");
         //petia.rates = vasia.rates;
@@ -392,7 +385,7 @@ public class Main {
         System.out.println("");
         System.out.println("Задача 1.4.7");
 
-        Student nvasia = new Student("Вася",grades);
+        Student nvasia = new Student("Вася");
         Student max = new Student("Максим");
         System.out.println(nvasia);
         System.out.println(max);
@@ -443,13 +436,13 @@ public class Main {
         System.out.println("");
         System.out.println("Задача 1.5.6");
 
-        Student v = new Student("Вася", grades);
+        Student v = new Student("Вася");
         Student v1 = new Student("Вася2");
         System.out.println(v.avg());
         System.out.println(v);
         System.out.println(v1.avg());
         System.out.println(v1);
-        Student v3 = new Student("Петя", grades);
+        Student v3 = new Student("Петя");
         System.out.println(v3.avg());
         System.out.println(v3.isFive());
         System.out.println(v3);
@@ -973,16 +966,20 @@ public class Main {
 
         System.out.println(res875);
 
-        ApplicationContext ac = new AnnotationConfigApplicationContext("ru.sasulin.spring");
-        Object ob = ac.getBean("bean1");
+        ApplicationContext ac = new AnnotationConfigApplicationContext("ru.sasulin.jdbc");
+/*        Object ob = ac.getBean("hello");
         System.out.println(ob);
-        Object ob2 = ac.getBean("bean2");
-        Object ob3 = ac.getBean("bean2");
+        Object ob2 = ac.getBean("random");
+        Object ob3 = ac.getBean("origin");
         System.out.println(ob2);
         System.out.println(ob3);
 
         MyEntity mn = new MyEntity();
-        Validator.validate(mn);
+        //Validator.validate(mn);*/
+
+        DepartmentRepo repo = ac.getBean(DepartmentRepo.class);
+        EmployeeRepo emp = ac.getBean(EmployeeRepo.class);
+        System.out.println(emp.findAllByDep("IT"));
     }
 
 }

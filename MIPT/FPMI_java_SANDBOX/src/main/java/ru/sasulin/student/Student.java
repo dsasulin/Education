@@ -17,7 +17,7 @@ public class Student implements Compareble, Action {
 
     private final Deque<Action> actions = new ArrayDeque<>();
 
-    Student(String name) {
+    public Student(String name) {
         this.name = name;
     }
     public Student(String name, Predicate<Integer> rule, int... marks) {
