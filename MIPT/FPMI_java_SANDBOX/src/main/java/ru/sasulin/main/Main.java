@@ -889,7 +889,7 @@ public class Main {
         List<List<Integer>> listList = List.of(integers3533);
         int res533 = reduce(map(listList, List::size), (x, y) -> x + y).orElse(0);
         System.out.println(res533);
-        
+
 
         Circle c434 = new Circle(new Point(1,1),1);
         System.out.println(c434.getCenter());
@@ -965,13 +965,13 @@ public class Main {
 
         Path path = Path.of("src/main/resources/data.txt");
 
-        var res = Files.lines(path)
+        var res875 = Files.lines(path)
                 .map(l->l.split(":"))
                 .filter(array -> array.length>1)
                 .map(array->new String[]{array[0],array[1]})
                 .collect(Collectors.groupingBy(array->array[1], Collectors.mapping(array-> array[0], Collectors.toList())));
 
-        System.out.println(res);
+        System.out.println(res875);
 
         ApplicationContext ac = new AnnotationConfigApplicationContext("ru.sasulin.spring");
         Object ob = ac.getBean("bean1");
