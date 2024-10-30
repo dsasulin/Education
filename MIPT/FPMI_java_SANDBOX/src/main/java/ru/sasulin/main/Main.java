@@ -1,7 +1,5 @@
 package ru.sasulin.main;
 
-
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
@@ -27,8 +25,6 @@ import ru.sasulin.human.Human;
 import ru.sasulin.human.Name;
 import ru.sasulin.jdbc.DepartmentRepo;
 import ru.sasulin.jdbc.EmployeeRepo;
-import ru.sasulin.reflection.MyEntity;
-import ru.sasulin.reflection.Validator;
 import ru.sasulin.student.Save;
 import ru.sasulin.student.Student;
 import ru.sasulin.time.Time;
@@ -980,6 +976,11 @@ public class Main {
         DepartmentRepo repo = ac.getBean(DepartmentRepo.class);
         EmployeeRepo emp = ac.getBean(EmployeeRepo.class);
         System.out.println(emp.findAllByDep("IT"));
+
+        Scanner sn = new Scanner(System.in);
+        Integer x =  sn.nextInt();
+        Integer y = sn.nextInt();
+        System.out.println(x+y);
     }
 
 }

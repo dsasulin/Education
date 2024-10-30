@@ -1,25 +1,24 @@
 package ru.sasulin.geometry;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Objects;
 
 @Getter
-@Setter
-public class Point implements Cloneable, Comparable{
+public class Point implements Cloneable, Comparable {
 
-    private int x,y;
+    private int x, y;
 
-    public Point(int x, int y){
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    public String toString(){
+
+    public String toString() {
         return "{" + x + ";" + y + "}";
     }
 
-    public void move (int x, int y) {
+    public void move(int x, int y) {
         this.setX(this.getX() + x);
         this.setY(this.getY() + y);
     }
@@ -38,9 +37,9 @@ public class Point implements Cloneable, Comparable{
     }
 
     @Override
-    public Point clone(){
+    public Point clone() {
         try {
-            return (Point)super.clone();
+            return (Point) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
@@ -50,8 +49,20 @@ public class Point implements Cloneable, Comparable{
     public int compareTo(Object o) {
         int res = 0;
         Point np = (Point) o;
-        if(np.x < this.x) {res = 1;}
-        if(np.x > this.x) {res = -1;}
+        if (np.x < this.x) {
+            res = 1;
+        }
+        if (np.x > this.x) {
+            res = -1;
+        }
         return res;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
